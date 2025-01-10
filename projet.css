@@ -4,18 +4,26 @@
     font-family: "Lato", Arial, Helvetica, sans-serif;
 }
 
-/* header */
 h1{
     font-size: 60px;
 }
 h1, h2{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-header{
-    background-color: #fdfdfd;
-    padding: 0 50px 0 50px;
-    height: 160px;
+
+/* header */
+#logo{
     width: auto;
+    height: 160px;
+}
+header{
+    height: 120px;
+    width: auto;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: #fdfdfd;
+    padding: 0 2% 0 2%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -26,18 +34,66 @@ header{
     h1{
         margin-bottom: -10px;
     }
-    #icon img{
-        padding: 30px;
+    #icon{
+        display: flex;
+        align-items: center;
+        margin-right: 3%;
+        gap: 30px;
+    }
+    #search{
+        height: 50px;
+        margin-right: 30px;
+    }
+    .icones{
+        height: 5vh;
+        width: auto;
     }
 }
+#menuContainer {
+    position: relative;
+}
 
-/* Main */
+#button {
+    cursor: pointer;
+    background-color: #fdfdfd;
+    border: none;
+    border-radius: 5px;
+}
+
+#button:hover {
+    background-color: gainsboro;
+}
+
+ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fdfdfd;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    list-style: none;
+}
+
+li a {
+    display: block;
+    padding: 10px 20px;
+    color: black;
+    text-decoration: none;
+}
+
+ul a:hover {
+    background-color: gainsboro;
+}
+
+/* Main accueil */
 
 main{
     background-color: #fdfdfd;
     text-align: center;
     div:first-child{
-        padding: 20px 500px 50px 500px;
+        padding: 20px 20% 50px 20%;
         font-size: xx-large;
         font-weight: bold;
     }
@@ -49,18 +105,33 @@ span{
 #categorie{
     display: flex;
     justify-content: center;
+    a{
+        display: flex;
+        justify-content: center;
+    }
     img{
-        height: 820px;
+        height: auto;
         width: 90%;
     }
-    h2:first-child{
+    h2{
+        display: none;
         position:absolute;
-        left: 50px;
+        color: #fdfdfd;
+        font-size: 50px;
+        background-color: rgb(11, 11, 11, 70%);
+        width: 42.2%;
+        padding: 1% 0%;
+    }
+    a:hover{
+        h2{
+        display:block;
+        }
     }
 }
 article{
-    width: 70%;
-    margin: 20px 200px 20px 105px;
+    width: 80%;
+    margin: 2% 2.5% 2% 2.5%;
+    
 }
 article a{
     display: flex;
@@ -69,11 +140,90 @@ article a{
     font-size: x-large;
     div{
     text-align: start;
-    margin-left: 10px;
+    margin-left: 1%;
     font-size: xx-large;
     }
 }
 
+/* Main Catégorie */
+
+.titreCate{
+    font-size: 5rem;
+}
+#imageMarque{
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-evenly;
+   a{
+    margin-top: 3%;
+    img{
+        width: 500px;
+        height: auto;
+    }
+   }
+}
+
+/* Footer */
+
 footer{
-    background-color: aqua;
+    div{
+        border-top: solid black 1px;
+        padding: 2%;
+        a{
+            margin-left: 10%;
+            color: black;
+        }
+    }
+}
+
+/* Responsive */
+
+@media only screen and (max-width:800px){
+    header{
+        #titreAccueil{
+            display: none;
+        }
+        #logoUtilisateur{
+            display: none;
+        }
+        #search{
+            width: 90px;
+            margin-right: 0;
+        }
+        #icon{
+            margin-right: 6%;
+            gap: 0;
+        }
+    }
+    
+    #categorie{
+        flex-direction: column;
+        a{
+        margin-bottom: 3%;
+        }
+    }
+    #imageMarque a img{
+        width: 170px;
+        height: auto;
+    }
+
+    main{
+        div:first-child{
+            padding: 20px 10% 20px 10%;
+            font-size: large;
+            font-weight: bold;
+        }
+        article{
+            width: 60%;
+            margin: 2% 2.5% 2% 2.5%;
+        }
+        article a{
+            color: black;
+            text-decoration: none;
+            div{
+            margin-left: 1%;
+            font-size: large;
+            }
+        }
+    }
 }

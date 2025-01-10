@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Films populaires</title>
+</head>
+<body>
+  <h1>Films populaires</h1>
+  <div id="movies"></div>
+
+  <script>
+    const apiKey = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxZDQwYjhkMmJiODEzZjcwNDM1YjNlMjM4YWRkZmU0MiIsIm5iZiI6MTczNjUwNzk5MS41MTYsInN1YiI6IjY3ODEwMjU3YzgxYWNhYTYzZGJiNmU1ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.b5ORsKozigHYkl_QVf6DaVDwi4cYPrCKg-hZegYoAx4'; // Remplacez par votre clé API
+    const url = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=fr-FR`;
+
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        const moviesDiv = document.getElementById('movies');
+        data.results.forEach(movie => {
+          const movieElement = document.createElement('div');
+          movieElement.innerHTML = `
+            <h2>${movie.title}</h2>
+            <p>${movie.overview}</p>
+            <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" />
+          `;
+          moviesDiv.appendChild(movieElement);
+        });
+      })
+      .catch(error => console.error('Erreur:', error));
+  </script>
+</body>
+</html>
