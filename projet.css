@@ -163,6 +163,21 @@ article a{
    }
 }
 
+/* Main Modele */
+main{
+    img{
+        width: 70%;
+        height: auto;
+    }
+
+    #modele{
+        display: flex;
+        h2{
+            font-size: xx-large;
+        }
+    }
+}
+
 /* Footer */
 
 footer{
