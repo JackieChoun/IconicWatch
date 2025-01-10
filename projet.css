@@ -92,7 +92,7 @@ ul a:hover {
 main{
     background-color: #fdfdfd;
     text-align: center;
-    div:first-child{
+    div p{
         padding: 20px 20% 50px 20%;
         font-size: xx-large;
         font-weight: bold;
@@ -164,17 +164,21 @@ article a{
 }
 
 /* Main Modele */
-main{
-    img{
-        width: 70%;
-        height: auto;
-    }
+img{
+    width: 90%;
+    height: auto;
+}
 
-    #modele{
+#modele{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    div{
         display: flex;
-        h2{
-            font-size: xx-large;
-        }
+        flex-direction: column;
+    }
+    h2{
+        font-size: 3rem;
+        text-align: start;
     }
 }
 
