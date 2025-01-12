@@ -16,17 +16,23 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // API Films
-const options = {
-    method: 'GET',
-    headers: {
-      accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxZDQwYjhkMmJiODEzZjcwNDM1YjNlMjM4YWRkZmU0MiIsIm5iZiI6MTczNjUwNzk5MS41MTYsInN1YiI6IjY3ODEwMjU3YzgxYWNhYTYzZGJiNmU1ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.b5ORsKozigHYkl_QVf6DaVDwi4cYPrCKg-hZegYoAx4'
-    }
-  };
+// const options = {
+//     method: 'GET',
+//     headers: {
+//       accept: 'application/json',
+//       Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxZDQwYjhkMmJiODEzZjcwNDM1YjNlMjM4YWRkZmU0MiIsIm5iZiI6MTczNjUwNzk5MS41MTYsInN1YiI6IjY3ODEwMjU3YzgxYWNhYTYzZGJiNmU1ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.b5ORsKozigHYkl_QVf6DaVDwi4cYPrCKg-hZegYoAx4'
+//     }
+//   };
+
   
-  fetch('https://api.themoviedb.org/3/authentication', options)
-    .then(res => res.json())
-    .then(res => console.log(res))
-    .catch(err => console.error(err));
+//   const contactApiSecurePlus =  async () => {
+//   const rawData = await fetch('https://api.themoviedb.org/3/authentication', options)
+//     .then(res => res.json())
+//     .then(res => console.log(res))
+//     .catch(err => console.error(err));
+//     console.log(rawData);
+//   }
+//   contactApiSecurePlus();
+  
 
   
