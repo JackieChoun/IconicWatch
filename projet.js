@@ -15,6 +15,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+
+// Fonction dark mode
+// window.addEventListener('load', function addDarkmodeWidget(){
+//     new Darkmode().showWidget();
+//   });
+  const darkmode =  new Darkmode();
+darkmode.toggle();
+console.log(darkmode.isActivated());
+
+  
+  
+
+
+
+
+
 // API Films
 // const options = {
 //     method: 'GET',
