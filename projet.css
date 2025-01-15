@@ -7,8 +7,8 @@
 h1{
     font-size: 60px;
 }
-h1, h2{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+h1, h2, h3{
+    font-family: 'Montserrat','Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 /* header */
@@ -124,7 +124,7 @@ span{
     }
     h2{
         display: none;
-        position:absolute;
+        position: absolute;
         color: #fdfdfd;
         font-size: 70px;
         background-color: rgb(11, 11, 11, 70%);
@@ -134,7 +134,7 @@ span{
     }
     a:hover{
         h2{
-        display:block;
+        display: block;
         }
     }
 }
@@ -291,6 +291,9 @@ footer{
         #logo{
             height: auto;
             width: 100px;
+        }
+        ul{
+            font-size: medium;
         }
     }
     
