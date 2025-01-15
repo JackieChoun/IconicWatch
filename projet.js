@@ -1,37 +1,51 @@
-// Fonction menu burger
+//? Fonction menu burger
 const menuButton = document.getElementById('button');
 const dropdownMenu = document.getElementById('liste');
-document.addEventListener('DOMContentLoaded', () => {
-    menuButton.addEventListener('click', () => {
-        const isMenuVisible = dropdownMenu.style.display === 'block';
-        dropdownMenu.style.display = isMenuVisible ? 'none' : 'block';
-    });
 
-    // Fermer le menu lorsqu'on clique en dehors
-    document.addEventListener('click', (event) => {
-        if (!event.target.closest('#menuContainer')) {
-            dropdownMenu.style.display = 'none';
-        }
-    });
+menuButton.addEventListener('click', () => {
+    const isMenuVisible = dropdownMenu.style.display === 'block';
+    dropdownMenu.style.display = isMenuVisible ? 'none' : 'block';
+});
+
+//? Fermer le menu lorsqu'on clique en dehors
+document.addEventListener('click', (event) => {
+    if (!event.target.closest('#menuContainer')) {
+    dropdownMenu.style.display = 'none';
+    }
 });
 
 
-// Fonction dark mode
+
+//? Fonction dark mode
 // window.addEventListener('load', function addDarkmodeWidget(){
 //     new Darkmode().showWidget();
 //   });
+
+//? Fonction dark mode toggle
   const darkmode =  new Darkmode();
-darkmode.toggle();
-console.log(darkmode.isActivated());
-
+  // darkmode.toggle();
+  console.log(darkmode.isActivated());
   
-  
+  const bouttonDarkMode = document.querySelector('#darkMode');
+bouttonDarkMode.addEventListener('click', () => {
+    darkmode.toggle()
+})
+
+//? Fonction save position toggle
+// window.addEventListener('DOMContentLoaded', () => {
+//     if (darkmode.saveInCookies == true) {
+//         test.checked = true 
+//     } else {
+//         test.checked = false;
+//     }
+// } )
 
 
 
 
 
-// API Films
+
+//? API Films
 // const options = {
 //     method: 'GET',
 //     headers: {
