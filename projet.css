@@ -163,8 +163,20 @@ article a{
     }
 }
 
-/* Main Catégorie */
+/* Main Marques */
 
+main{
+    div:first-child{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .retour{
+        font-size: xx-large;
+        color: black;
+        
+    }
+}
 .titreCate{
     font-size: 5rem;
 }
@@ -292,7 +304,7 @@ footer{
             margin-right: 0;
         }
         #icon{
-            margin-right: 15%;
+            margin-right: 5%;
             gap: 1;
         }
         .icones{
