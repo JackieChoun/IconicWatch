@@ -42,72 +42,52 @@ bouttonDarkMode.addEventListener('click', () => {
 
 
 
-const description = document.querySelector('#articlefilm');
-let info = document.createElement('div');
-
-
  //? API Films
-const options = {
-    method: 'GET',
-    headers: {
-      accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxZDQwYjhkMmJiODEzZjcwNDM1YjNlMjM4YWRkZmU0MiIsIm5iZiI6MTczNjUwNzk5MS41MTYsInN1YiI6IjY3ODEwMjU3YzgxYWNhYTYzZGJiNmU1ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.b5ORsKozigHYkl_QVf6DaVDwi4cYPrCKg-hZegYoAx4'
-    }
-  };
+        const API_KEY = "1d40b8d2bb813f70435b3e238addfe42"; // Clé API TMDb
+        const MOVIE_IDS = [550, 155, 157336, 680, 13, 329, 9377, 598, 8844]; // Rajouter ici les ID TMDb 
 
-  
-//   const contactApiSecurePlus =  async () => {
-//   const rawData = await fetch('https://api.themoviedb.org/3/authentication', options)
-//     .then(res => res.json())
-//     .then(res => console.log(res))
-//     .catch(err => console.error(err));
-//     console.log(rawData);
-//   }
-//   contactApiSecurePlus();
-  
+        const filmsContainer = document.getElementById("articleFilm");
 
+        const fetchMovie =  async (id) => {
+          try{
+            const rawData = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=fr-FR`)
 
-  const contactApiSecurePlus =  async () => {
-    try {
-        const rawData = await fetch('https://api.themoviedb.org/3/authentication', options)
-        .then(res => res.json())
-        .then(res => console.log(res))
-        .catch(err => console.error(err));
-        console.log(rawData);
-        
-        // Vérification du statut de la réponse
-        if (!rawData.ok || rawData.status !== 200) { // Vérification du statut 200
+            //Vérification du statut de la réponse
+            if (!rawData.ok || rawData.status !== 200) { // Vérification du statut 200
             console.error("Erreur lors de la récupération des données : ", rawData.statusText);
             return; // Sortir de la fonction si la réponse n'est pas OK
+            }
+            //On transforme la reponse en objet JS
+            const transformedData = await rawData.json();
+            
+                // Création des éléments HTML
+                let filmDiv = document.createElement("div");
+                let title = document.createElement("h2");
+                let img = document.createElement("img");
+                let description = document.createElement("p");
+
+                title.innerText = transformedData.title;
+                img.src = `https://image.tmdb.org/t/p/w200${transformedData.poster_path}`;
+                img.alt = `Affiche de ${transformedData.title}`;
+                description.innerText = transformedData.overview;
+
+                // Ajout des éléments au conteneur
+                filmDiv.append(img);
+                filmDiv.append(title);
+                filmDiv.append(description);
+
+                // Ajout à la page
+                filmsContainer.append(filmDiv)
+            
+                //CSS
+                filmDiv.style.margin = "10px";
+                img.style.float = "left";
+                
+
+              } catch (error) {
+                console.error("Erreur lors de l'appel à l'API : ", error);
+            }
         }
 
-        const transformedData = await rawData.json();
-    for(let i = 0; i < transformedData.length; i++){
-        console.log(transformedData);
-        let container = document.createElement('div');
-        let nom = document.createElement('h3');
-        let image = document.createElement('img');
-        let synopsis = document.createElement('li');
-
-        apiDiv.append(container);
-        image.src = transformedData[i].sprites.regular;
-        nom.innerText = transformedData[i].name.fr;
-        synopsis.innerText = 'Synopsis: ';
-        for(let j = 0; j < transformedData[i].types.length; j++){
-        synopsis.innerText += transformedData[i].types[j].name + ' ';
-        };
-        height.innerText = 'Taille: '+ transformedData[i].height;
-        weight.innerText = 'Poids: ' + transformedData[i].weight;
-
-        container.append(image);
-        container.append(nom);
-        container.append(synopsis);
-        container.append(height);
-        container.append(weight);
-    }
-
-    } catch (error) {
-        console.error("Erreur lors de l'appel à l'API : ", error);
-    }
-}
-contactApiSecurePlus();
+        // Charger tous les films de la liste
+        MOVIE_IDS.forEach(fetchMovie);

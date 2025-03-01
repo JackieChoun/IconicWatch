@@ -10,6 +10,10 @@ h1{
 h1, h2, h3{
     font-family: 'Montserrat','Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+.titreCate{
+    font-size: 55px;
+    text-align: center;
+}
 
 /* header */
 header{
@@ -92,80 +96,81 @@ ul a:hover {
 
 /* Main accueil */
 
-main{
-    background-color: #fdfdfd;
-    text-align: center;
+#Acceuil{
+        background-color: #fdfdfd;
+        text-align: center;
+    
     #txtBienvenu p{
         padding: 20px 20% 50px 20%;
         font-size: xx-large;
         font-weight: bold;
     }
-}
-span{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-weight: normal;
-}
-#categorie{
-    display: grid;
-    grid-template-columns: 1fr, 1fr;
-    a:first-child{
-        grid-column: 1;
+    span{
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-weight: normal;
     }
-    a:nth-child(2){
-        grid-column: 2;
-    }
-    a{
-        display: flex;
-        justify-content: center;
-    }
-    img{
-        height: auto;
-        width: 90%;
-    }
-    h2{
-        display: none;
-        position: absolute;
-        color: #fdfdfd;
-        font-size: 70px;
-        background-color: rgb(11, 11, 11, 70%);
-        width: 45%;
-        padding: 1% 0%;
-        z-index: 1;
-    }
-    a:hover{
+    #categorie{
+        display: grid;
+        grid-template-columns: 1fr, 1fr;
+        a:first-child{
+            grid-column: 1;
+        }
+        a:nth-child(2){
+            grid-column: 2;
+        }
+        a{
+            display: flex;
+            justify-content: center;
+        }
+        img{
+            height: auto;
+            width: 90%;
+        }
         h2{
-        display: block;
+            display: none;
+            position: absolute;
+            color: #fdfdfd;
+            font-size: 70px;
+            background-color: rgb(11, 11, 11, 70%);
+            width: 45%;
+            padding: 1% 0%;
+            z-index: 1;
+        }
+        a:hover{
+            h2{
+            display: block;
+            }
         }
     }
-}
-article{
-    width: 80%;
-    margin: 2% 2.5% 2% 2.5%;
-    h2{
-        font-size: 3rem;
-        text-align: start;
+    article{
+        width: 80%;
+        margin: 2% 2.5% 2% 2.5%;
+        h2{
+            font-size: 3rem;
+            text-align: start;
+        }
+        img{
+            float: left;
+            margin-right: 2%
+        };
+        
     }
-    img{
-        float: left;
-        margin-right: 2%
-    };
-    
-}
-article a{
-    display: flex;
-    color: black;
-    text-decoration: none;
-    font-size: x-large;
-    div{
-    text-align: start;
-    font-size: xx-large;
-    gap: 10px;
+    article a{
+        display: flex;
+        color: black;
+        text-decoration: none;
+        font-size: x-large;
+        div{
+        text-align: start;
+        font-size: xx-large;
+        gap: 10px;
+        }
     }
 }
 
 /* Main Marques */
 
-main{
+#Marque{
     div:first-child{
         display: flex;
         justify-content: center;
@@ -176,31 +181,28 @@ main{
         color: black;
         
     }
-}
-.titreCate{
-    font-size: 5rem;
-}
-#imageMarque{
-   display: flex;
-   flex-wrap: wrap;
-   justify-content: space-evenly;
-   a{
-    margin-top: 3%;
-    margin-bottom: 3%;
+    #imageMarque{
     display: flex;
-    img{
-        width: 400px;
-        height: auto;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+        a{
+            margin-top: 3%;
+            margin-bottom: 3%;
+            display: flex;
+            img{
+                width: 400px;
+                height: auto;
+            }
+            .titreMarque{
+                position: absolute;
+                z-index: 1;
+                background-color: rgb(128, 128, 128, 70%);
+                border-radius: 0% 0% 15px 15px;
+                height: 10%;
+                align-self: flex-end;
+            }
+        }
     }
-    .titreMarque{
-        position: absolute;
-        z-index: 1;
-        background-color: rgb(128, 128, 128, 70%);
-        border-radius: 0% 0% 15px 15px;
-        height: 10%;
-        align-self: flex-end;
-    }
-   }
 }
 
 /* Main Modele */
@@ -220,6 +222,13 @@ main{
         width: 90%;
         height: auto;
     }
+}
+
+/* Main Films */
+
+#articleFilm{
+    display: flex;
+    flex-direction: column;
 }
 
 /* Footer */
