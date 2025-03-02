@@ -44,7 +44,7 @@ bouttonDarkMode.addEventListener('click', () => {
 
  //? API Films
         const API_KEY = "1d40b8d2bb813f70435b3e238addfe42"; // Clé API TMDb
-        const MOVIE_IDS = [550, 155, 157336, 680, 13, 329, 9377, 598, 8844]; // Rajouter ici les ID TMDb 
+        const MOVIE_IDS = [157336, 550, 155, 680, 13, 329, 9377, 598, 8844]; // Rajouter ici les ID TMDb 
 
         const filmsContainer = document.getElementById("articleFilm");
 
@@ -62,26 +62,26 @@ bouttonDarkMode.addEventListener('click', () => {
             
                 // Création des éléments HTML
                 let filmDiv = document.createElement("div");
-                let title = document.createElement("h2");
+                let title = document.createElement("h3");
                 let img = document.createElement("img");
                 let description = document.createElement("p");
+                let lien = document.createElement("a");
 
                 title.innerText = transformedData.title;
-                img.src = `https://image.tmdb.org/t/p/w200${transformedData.poster_path}`;
+                img.src = `https://image.tmdb.org/t/p/w300${transformedData.poster_path}`;
                 img.alt = `Affiche de ${transformedData.title}`;
                 description.innerText = transformedData.overview;
+                lien.href = ``;
 
                 // Ajout des éléments au conteneur
-                filmDiv.append(img);
-                filmDiv.append(title);
-                filmDiv.append(description);
+                filmDiv.append(lien);
+                lien.append(img);
+                lien.append(title);
+                lien.append(description);
+                
 
                 // Ajout à la page
                 filmsContainer.append(filmDiv)
-            
-                //CSS
-                filmDiv.style.margin = "10px";
-                img.style.float = "left";
                 
 
               } catch (error) {
