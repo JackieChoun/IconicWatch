@@ -3,7 +3,7 @@
     <h2 class="titreCate">HAMILTON</h2>
     <div id="modele">
         <div>
-            <a href=""><img src="./source/image/montres/hamilton/hamiltonKaki.jpg" alt="hamilton Kaki"></a>
+            <a href="controllerInterstellar.php"><img src="./source/image/montres/hamilton/hamiltonKaki.jpg" alt="hamilton Kaki"></a>
             <h2>Hamilton Khaki Field Murph</h2>
         </div>
         <div>

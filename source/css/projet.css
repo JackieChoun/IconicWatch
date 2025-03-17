@@ -335,12 +335,21 @@ ul a:hover {
   color: rgb(160, 160, 160);
 }
 
+/*! Main compte */
+
+#compte {
+  div {
+    text-align: center;
+    margin: 5% 0%;
+  }
+}
+
 /*! Main fiche film */
 
 .ficheFilms {
   img {
     width: 100%;
-    height: 90%;
+    height: auto;
   }
   .imageFilms {
     display: grid;
@@ -374,7 +383,6 @@ ul a:hover {
   }
   textarea {
     background-color: black;
-    text-align: center;
     color: #fdfdfd;
     font-weight: bold;
     width: 70%;
