@@ -14,9 +14,7 @@
     </div>
     <article>
         <h2>Dernier Ajout</h2>
-        <a href="">
-            <div id="last">
-            </div>
-        </a>
+        <div id="last">
+        </div>
     </article>
 </main>

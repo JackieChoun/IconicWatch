@@ -135,15 +135,16 @@ ul a:hover {
       transition: transform 0.2s ease-in-out;
     }
   }
-  article a {
+  article div {
     display: flex;
-    color: black;
-    text-decoration: none;
+    text-align: start;
     font-size: x-large;
-    div {
-      text-align: start;
+    h3 {
       font-size: xx-large;
-      gap: 10px;
+    }
+    a {
+      color: black;
+      text-decoration: none;
     }
   }
 }

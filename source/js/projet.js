@@ -126,10 +126,10 @@ const dernierajout = async (id) => {
     description.innerText = transformedData.overview;
     lien.href = `controller${filmLien}.php`;
 
+    lastmovie.append(lien);
     lien.append(img);
     lien.append(title);
     lien.append(description);
-    lastmovie.append(lien);
   } catch (error) {
     console.error("Erreur lors de l'appel à l'API : ", error);
   }
