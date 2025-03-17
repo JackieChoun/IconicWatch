@@ -41,7 +41,7 @@ bouttonDarkMode.addEventListener("click", () => {
 //! API Films
 const API_KEY = "1d40b8d2bb813f70435b3e238addfe42"; // Clé API TMDb
 const MOVIE_IDS = [
-  157336, 550, 155, 680, 13, 329, 9377, 598, 8844, 7347, 156022, 8421, 565,
+  157336, 550, 155, 680, 13, 329, 9377, 598, 8844, 8421, 565, 2671, 137,
 ]; // Rajouter ici les ID TMDb
 
 const filmsContainer = document.getElementById("articleFilm");
@@ -70,12 +70,13 @@ const fetchMovie = async (id) => {
     let img = document.createElement("img");
     let description = document.createElement("p");
     let lien = document.createElement("a");
+    const filmLien = transformedData.title.replace(/\s+/g, "-").toLowerCase();
 
     title.innerText = transformedData.title;
     img.src = `https://image.tmdb.org/t/p/w300${transformedData.poster_path}`;
     img.alt = `Affiche de ${transformedData.title}`;
     description.innerText = transformedData.overview;
-    lien.href = ``;
+    lien.href = `controller${filmLien}.php`;
 
     // Ajout des éléments au conteneur
     filmDiv.append(lien);
@@ -116,15 +117,19 @@ const dernierajout = async (id) => {
     let title = document.createElement("h3");
     let img = document.createElement("img");
     let description = document.createElement("p");
+    let lien = document.createElement("a");
+    let filmLien = transformedData.title.replace(/\s+/g, "-").toLowerCase();
 
     title.innerText = transformedData.title;
     img.src = `https://image.tmdb.org/t/p/w300${transformedData.poster_path}`;
     img.alt = `Affiche de ${transformedData.title}`;
     description.innerText = transformedData.overview;
+    lien.href = `controller${filmLien}.php`;
 
-    lastmovie.append(img);
-    lastmovie.append(title);
-    lastmovie.append(description);
+    lien.append(img);
+    lien.append(title);
+    lien.append(description);
+    lastmovie.append(lien);
   } catch (error) {
     console.error("Erreur lors de l'appel à l'API : ", error);
   }
