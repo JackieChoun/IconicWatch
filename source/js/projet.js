@@ -137,9 +137,8 @@ const dernierajout = async (id) => {
 
 MOVIE_IDS.findLast(dernierajout);
 
-//!Regex
-const firstName = document.querySelector("#firstName");
-const lastName = document.querySelector("#lastName");
+//!Regex Création de compte
+const pseudo = document.querySelector("#pseudo");
 const email = document.querySelector("#inscriptionEmail");
 const password = document.querySelector("#inscriptionPassword");
 const messageMail = document.querySelector("#messageMail");
@@ -171,18 +170,43 @@ email.addEventListener("keyup", () => {
   }
 });
 
-const regexNomCreation = /^[A-Za-zÀ-ÿ\- ]{2,}$/;
-firstName.addEventListener("keyup", () => {
-  if (regexNomCreation.test(firstName.value)) {
-    firstName.style.border = "solid 3px green";
+const regexPseudo = /^[A-Za-zÀ-ÿ\-0-9 ]{2,}$/;
+pseudo.addEventListener("keyup", () => {
+  if (regexPseudo.test(pseudo.value)) {
+    pseudo.style.border = "solid 3px green";
   } else {
-    firstName.style.border = "solid 3px red";
+    pseudo.style.border = "solid 3px red";
   }
 });
-lastName.addEventListener("keyup", () => {
-  if (regexNomCreation.test(lastName.value)) {
-    lastName.style.border = "solid 3px green";
+
+//! Regex connexion
+const passwordCo = document.querySelector("#connexionPassword");
+const emailCo = document.querySelector("#connexionEmail");
+const messageMailCo = document.querySelector("#messageMailCo");
+const messagePasswordCo = document.querySelector("#messagePasswordCo");
+
+const regexPasswordConnexion =
+  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}$/;
+passwordCo.addEventListener("keyup", () => {
+  if (regexPasswordConnexion.test(passwordCo.value)) {
+    passwordCo.style.border = "solid 3px green";
+    messagePassword.style.display = "none";
   } else {
-    lastName.style.border = "solid 3px red";
+    passwordCo.style.border = "solid 3px red";
+    messagePasswordCo.innerText =
+      "Le mot de passe doit contenir au moins 8 caractères, une minuscule, une majuscule, un chiffre et un caractère spécial";
+    messagePasswordCo.style.color = "red";
+  }
+});
+
+const regexMailConnexion = /^[a-z0-9._-]+@[a-z0-9._-]+\.[a-z]{2,6}$/;
+emailCo.addEventListener("keyup", () => {
+  if (regexMailConnexion.test(emailCo.value)) {
+    emailCo.style.border = "solid 3px green";
+    messageMailCo.style.display = "none";
+  } else {
+    emailCo.style.border = "solid 3px red";
+    messageMailCo.innerText = "Email non valide";
+    messageMailCo.style.color = "red";
   }
 });

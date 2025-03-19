@@ -1,3 +1,16 @@
+<?php
+
+if (isset($_SESSION["id_utilisateur"])) {
+    echo "<style>.link {
+            display: none;
+        }</style>";
+} else {
+    echo "<style>.linkCo {
+            display: none;
+        }</style>";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -27,14 +40,16 @@
                 <input type="search" maxlength="100" minlength="2" size="30" id="search">
                 <label for="search"> <img src="./source/image/logo/Search.svg" alt="search" class="icones"> </label>
             </div>
-            <a href="controllerConnexion.php"><img src="./source/image/logo/utilisateur.svg" alt="utilisateur" class="icones" id="logoUtilisateur"></a>
+            <a href="<?php echo isset($_SESSION['id_utilisateur']) ? 'controllerCompteUtilisateur.php' : 'controllerConnexion.php'; ?>"> <img src="./source/image/logo/utilisateur.svg" alt="utilisateur" class="icones"></a>
             <nav id="menuContainer">
                 <button id="button"><img src="./source/image/logo/Menu.svg" alt="Menu"></button>
                 <ul id="liste">
                     <li> <a href="index.php">Accueil</a> </li>
                     <li> <a href="controllerMarques.php">Marques</a> </li>
                     <li> <a href="controllerFilms.php">Films</a> </li>
-                    <li> <a href="controllerCompteUtilisateur.php">Compte</a> </li>
+                    <li> <a href="controllerConnexion.php" class="link">Connexion</a> </li>
+                    <li> <a href="controllerCompteUtilisateur.php" class="linkCo">Compte</a> </li>
+                    <li> <a href="deco.php" class="linkCo">Déconnexion</a> </li>
                 </ul>
             </nav>
         </div>

@@ -2,8 +2,10 @@
     <div>
         <h2 class="titreCate">Connexion</h2>
         <form action="" method="post">
-            <input type="email" name="email" placeholder="Email" required>
-            <input type="password" name="password" placeholder="Mot de passe" required>
+            <input type="email" id="connexionEmail" name="email" placeholder="Email" required>
+            <p id="messageMailCo"></p>
+            <input type="password" id="connexionPassword" name="password" placeholder="Mot de passe" required>
+            <p id="messagePasswordCo"></p>
             <a href="#">J'ai oublié mon mot de passe</a>
             <p> <?php echo $messageCo; ?> </p>
             <button type="submit" value="envoyer" id="connexionButton" class="btn-1" name="connexionButton">Accès à mon compte</button>

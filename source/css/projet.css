@@ -340,7 +340,23 @@ ul a:hover {
 #compte {
   div {
     text-align: center;
-    margin: 5% 0%;
+    margin: 2% 0%;
+    p,
+    a {
+      font-size: x-large;
+      margin: 2% 0%;
+      color: black;
+    }
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    margin: 2% 40%;
+  }
+  input {
+    text-align: center;
+    font-size: x-large;
+    margin-bottom: 2%;
   }
 }
 
@@ -460,6 +476,10 @@ footer {
 /*! Responsive */
 
 @media only screen and (max-width: 800px) {
+  .retour {
+    display: none;
+  }
+
   header {
     #titreAccueil {
       display: none;
