@@ -402,7 +402,17 @@ ul a:hover {
     color: #fdfdfd;
     font-weight: bold;
     width: 70%;
-    height: 50%;
+    height: 30%;
+  }
+  #listeCommentaires {
+    margin: 2% 10%;
+    h2 {
+      padding-bottom: 2%;
+    }
+    div {
+      border: solid black 1px;
+      margin: 2% 0%;
+    }
   }
 }
 
@@ -475,7 +485,7 @@ footer {
 
 /*! Responsive */
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 768px) {
   .retour {
     display: none;
   }

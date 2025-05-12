@@ -39,7 +39,6 @@ bouttonDarkMode.addEventListener("click", () => {
 // } )
 
 //! API Films
-const API_KEY = "1d40b8d2bb813f70435b3e238addfe42"; // Clé API TMDb
 const MOVIE_IDS = [
   157336, 550, 155, 680, 13, 329, 9377, 598, 8844, 8421, 565, 2671, 137,
 ]; // Rajouter ici les ID TMDb
@@ -48,9 +47,7 @@ const filmsContainer = document.getElementById("articleFilm");
 
 const fetchMovie = async (id) => {
   try {
-    const rawData = await fetch(
-      `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=fr-FR`
-    );
+    const rawData = await fetch(`utils/api/get-movie.php?id=${id}`);
 
     //Vérification du statut de la réponse
     if (!rawData.ok || rawData.status !== 200) {
@@ -75,14 +72,13 @@ const fetchMovie = async (id) => {
     title.innerText = transformedData.title;
     img.src = `https://image.tmdb.org/t/p/w300${transformedData.poster_path}`;
     img.alt = `Affiche de ${transformedData.title}`;
+    img.loading = "lazy"; // Chargement différé de l'image
     description.innerText = transformedData.overview;
     lien.href = `controller${filmLien}.php`;
 
     // Ajout des éléments au conteneur
     filmDiv.append(lien);
-    lien.append(img);
-    lien.append(title);
-    lien.append(description);
+    lien.append(img, title, description);
 
     // Ajout à la page
     filmsContainer.append(filmDiv);
@@ -99,9 +95,7 @@ MOVIE_IDS.forEach(fetchMovie);
 const lastmovie = document.getElementById("last");
 const dernierajout = async (id) => {
   try {
-    const rawData = await fetch(
-      `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=fr-FR`
-    );
+    const rawData = await fetch(`utils/api/get-movie.php?id=${id}`);
 
     //Vérification du statut de la réponse
     if (!rawData.ok || rawData.status !== 200) {
@@ -210,3 +204,10 @@ emailCo.addEventListener("keyup", () => {
     messageMailCo.style.color = "red";
   }
 });
+
+//! Boite de dialogue de confirmation pour la suppression de compte
+function confirmDeletion() {
+  return confirm(
+    "Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible."
+  );
+}

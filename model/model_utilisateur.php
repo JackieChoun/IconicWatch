@@ -55,3 +55,43 @@ function readUserBymail($bdd, $email)
         return $error->getMessage();
     }
 }
+
+//! Uptade de l'utilisateur
+function updatePassword($bdd, $id_utilisateur, $newPasswordHash)
+{
+    try {
+        $req = $bdd->prepare("UPDATE utilisateurs SET mdp_utilisateur = ? WHERE id_utilisateur = ?");
+        $req->bindParam(1, $newPasswordHash, PDO::PARAM_STR);
+        $req->bindParam(2, $id_utilisateur, PDO::PARAM_INT);
+        $req->execute();
+        return true;
+    } catch (Exception $error) {
+        return $error->getMessage();
+    }
+}
+
+function updateEmail($bdd, $id_utilisateur, $newEmail)
+{
+    try {
+        $req = $bdd->prepare("UPDATE utilisateurs SET email_utilisateur = ? WHERE id_utilisateur = ?");
+        $req->bindParam(1, $newEmail, PDO::PARAM_STR);
+        $req->bindParam(2, $id_utilisateur, PDO::PARAM_INT);
+        $req->execute();
+        return true;
+    } catch (Exception $error) {
+        return $error->getMessage();
+    }
+}
+
+function deleteUser($bdd, $id_utilisateur)
+{
+    try {
+        $req = $bdd->prepare("DELETE FROM utilisateurs WHERE id_utilisateur = ?");
+        $req->bindParam(1, $id_utilisateur, PDO::PARAM_INT);
+        $req->execute();
+        return true;
+    } catch (Exception $error) {
+        return $error->getMessage();
+    }
+}
+

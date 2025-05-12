@@ -1,44 +1,19 @@
 <?php
 
-function comAdd($bdd, $contenu, $date)
-{
-    try {
-
-        $req = $bdd->prepare("INSERT INTO commentaires (`contenu_commentaire`, `date_commentaire`) VALUES (?,?)");
-
-        $req->bindParam(1, $contenu, PDO::PARAM_STR);
-        $req->bindParam(2, $date, PDO::PARAM_STR);
-
-        $req->execute();
-
-        return "Votre commentaire est envoyé";
-    } catch (EXCEPTION $error) {
-        return $error->getMessage();
-    }
+function getCommentairesByArticle(PDO $pdo, int $id_article): array {
+    $sql = "SELECT c.contenu_commentaire, c.date_commentaire, u.pseudo_utilisateur
+            FROM commentaires c
+            JOIN utilisateurs u ON c.id_utilisateur = u.id_utilisateur
+            WHERE c.id_article = ?
+            ORDER BY c.date_commentaire DESC";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$id_article]);
+    return $stmt->fetchAll();
 }
 
-function comAll($bdd)
-{
-    try {
-        //!préparer le SELECT
-        $req = $bdd->prepare("SELECT contenu_commentaire, date_commentaire FROM commentaires");
-
-        //!execution de la requete
-        $req->execute();
-
-        //!récupérer données BDD
-        $data = $req->fetchAll();
-
-        //création varible
-        $comList = "";
-
-        //!affichage
-        foreach ($data as $commentaire) {
-            $comList = $comList . "<div> <p>date:{$commentaire['date_commentaire']} {$commentaire['contenu_commentaire']}</p> </div>";
-        }
-
-        return $comList;
-    } catch (EXCEPTION $e) {
-        return $e->getMessage();
-    }
+function ajouterCommentaire(PDO $pdo, int $id_article, int $id_utilisateur, string $contenu): bool {
+    $sql = "INSERT INTO commentaires (contenu_commentaire, date_commentaire, id_article, id_utilisateur)
+            VALUES (?, NOW(), ?, ?)";
+    $stmt = $pdo->prepare($sql);
+    return $stmt->execute([$contenu, $id_article, $id_utilisateur]);
 }

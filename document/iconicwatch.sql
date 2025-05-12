@@ -1,7 +1,7 @@
-CREATE DATABASE IF NOT EXISTS IconicWatch CHARSET utf8mb4;
-USE IconicWatch;
+CREATE DATABASE IF NOT EXISTS iconicwatch CHARSET utf8mb4;
+USE iconicwatch;
 
-CREATE TABLE IF NOT EXISTS `role`(
+CREATE TABLE IF NOT EXISTS roles(
 	id_role INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
 	nom_role VARCHAR(50) NOT NULL
 )ENGINE=InnoDB;
@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS ecrire(
 ALTER TABLE utilisateurs
     ADD CONSTRAINT fk_role
     FOREIGN KEY (id_role)
-    REFERENCES `role`(id_role)
+    REFERENCES roles(id_role)
     ON DELETE CASCADE;
     
 ALTER TABLE commentaires
@@ -68,3 +68,5 @@ ALTER TABLE commentaires
     FOREIGN KEY (id_utilisateur)
     REFERENCES utilisateurs(id_utilisateur)
     ON DELETE CASCADE;
+    
+    INSERT INTO roles (nom_role) VALUES ("utilisateur"), ("administrateur");

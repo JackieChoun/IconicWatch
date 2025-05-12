@@ -1,27 +1,50 @@
 <?php
-//session_start(); // Démarre la session
+session_start();
 
-// include "./model/model_commentaire.php";
-// include "./utils/functions.php";
-$comList = "";
-// $bdd = DBconnect();
-// $comList = comAll($bdd);
+require_once 'utils/functions.php';             // contient DBconnect() & nettoyage()
+require_once 'model/model_commentaire.php';
 
-// if (isset($_POST["envoyerCom"])) {
-//     //! 1er étape: vérifier les champs vides
-//     if (isset($_POST["contenu_commentaire"]) && !empty($_POST["contenu_commentaire"])) {
-//         //! 3eme étape: nettoyer les données
-//         $contenu = nettoyage($_POST["contenu_commentaire"]);
-//         $date = date(DATE_RFC2822);
+$pdo = DBconnect();
 
-//         $bdd = DBconnect();
+// ID de l'article à afficher
+//todo ou à récupérer dynamiquement via $_GET['id_article'] 
+$id_article = 1;
 
-//         return comAdd($bdd, $contenu, $date);
-//     } else {
-//         $message = "Remplis les champs, burro";
-//     }
-// }
+// Traitement du POST : ajout de commentaire 
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contenu_commentaire'])) {
+    // Vérifie que l'utilisateur est connecté
+    if (isset($_SESSION['id_utilisateur'])) {
+        // Nettoyage du contenu du commentaire
+        $contenu = nettoyage($_POST['contenu_commentaire']);
+        // Vérifie que le contenu du commentaire est valide (au moins 3 caractères)
+        if (strlen($contenu) >= 3) {
+            ajouterCommentaire($pdo, $id_article, $_SESSION['id_utilisateur'], $contenu);
+            // Redirection vers la page de l'article
+            header("Location: " . $_SERVER['REQUEST_URI']);
+            exit;
+        }
+        
+    } else {
+        // si non connecté, tu peux stocker un message d'erreur
+        header("Location: controllerConnexion.php");
+        exit;
+    }
+}
 
+// Récupération des commentaires existants 
+$commentaires = getCommentairesByArticle($pdo, $id_article);
+
+// Génération de la variable $comList pour la view
+$comList = '';
+foreach ($commentaires as $c) {
+    $comList .= '<div>';
+    $comList .= '<strong>' . $c['pseudo_utilisateur'] . '</strong> ';
+    $comList .= '<em>' . $c['date_commentaire'] . '</em>';
+    $comList .= '<p>' . $c['contenu_commentaire'] . '</p>';
+    $comList .= '</div>';
+}
+
+// Affichage de la vue
 include "view/header.php";
 include "view/viewInterstellar.php";
 include "view/footer.php";

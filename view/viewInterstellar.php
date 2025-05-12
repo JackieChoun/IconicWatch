@@ -17,12 +17,18 @@
     </div>
     <p>Cette montre vintage spécialement conçue par Hamilton pour le film de Christopher Nolan Interstellar est donnée par le protagoniste Joseph Cooper (interprétré par Mattew McConaughey) à sa fille Murphy Cooper (Jessica Chastain et McKenzy Foy). D’où son appellation de Khaki Field “Murph”. J'ai personnellement une préférence pour la récente version en 38mm.
     </p>
+    <?php if (isset($_SESSION['id_utilisateur'])): ?>
     <form action="" method="post">
-        <textarea name="contenu_commentaire" id="commentaire" rows="10" placeholder="Commentaire" required></textarea>
-        <button type="submit" name="envoyerCom">Envoyer</button>
+        <textarea name="contenu_commentaire" id="commentaire" placeholder="Commentaire" required></textarea>
+        <div>
+            <button type="submit" name="envoyerCom" class="btn-1">Ajouter commentaire</button>
+        </div>
     </form>
-    <h2>Liste Commentaires</h2>
-    <div>
+    <?php else: ?>
+        <p><a href="index.php?page=connexion">Connecte-toi</a> pour poster un commentaire.</p>
+    <?php endif; ?>
+    <div id="listeCommentaires">
+        <h2>Liste Commentaires</h2>
         <?= $comList; ?>
     </div>
 </main>
