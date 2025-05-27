@@ -365,7 +365,7 @@ ul a:hover {
 .ficheFilms {
   img {
     width: 100%;
-    height: auto;
+    height: 100%;
   }
   .imageFilms {
     display: grid;
@@ -400,9 +400,13 @@ ul a:hover {
   textarea {
     background-color: black;
     color: #fdfdfd;
+    font-size: x-large;
     font-weight: bold;
     width: 70%;
-    height: 30%;
+    height: 25%;
+    padding-left: 1%;
+    padding-top: 1%;
+    margin-bottom: 1%;
   }
   #listeCommentaires {
     margin: 2% 10%;
@@ -503,7 +507,7 @@ footer {
     }
     #icon {
       margin-right: 5%;
-      gap: 1;
+      gap: 10px;
     }
     .icones {
       height: 5vh;

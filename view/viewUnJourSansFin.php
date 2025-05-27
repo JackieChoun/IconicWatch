@@ -2,27 +2,32 @@
     <a href="javascript:history.back()" class="retour">Retour</a>
     <img src="./source/image/films/unjoursansfin/unjoursansfin.webp" alt="affiche Interstellar">
     <div class="imageFilms">
-        <img src="./source/image/films/interstellar/image10.webp" alt="">
-        <img src="./source/image/films/interstellar/image11.webp" alt="">
-        <img src="./source/image/films/interstellar/image12.webp" alt="">
-        <img src="./source/image/films/interstellar/image13.webp" alt="">
-        <h2 class="titreCate">Hamilton Kaki Field Murph</h2>
+        <img src="./source/image/films/unjoursansfin/image1.jpg" alt="">
+        <img src="./source/image/films/unjoursansfin/image2.png" alt="">
+        <img src="./source/image/films/unjoursansfin/image3.jpg" alt="">
+        <img src="./source/image/films/unjoursansfin/image4.jpg" alt="">
+        <h2 class="titreCate">Réveil-matin Panasonic RC-6025</h2>
     </div>
     <div class="caracteristique">
-        <h3>Montre automatique</h3>
-        <a href="https://www.hamiltonwatch.com/fr-fr/h70605731-khaki-field-murph-auto.html" target="_blank">
-            <h3>Toujours en vente par la marque</h3>
-        </a>
-        <h3>42mm de diamètre</h3>
+        <h3>Réveil matin</h3>
+        <h3>Plus en vente par la marque</h3>
+        <h3>Objet de collection</h3>
     </div>
-    <p>Cette montre vintage spécialement conçue par Hamilton pour le film de Christopher Nolan Interstellar est donnée par le protagoniste Joseph Cooper (interprétré par Mattew McConaughey) à sa fille Murphy Cooper (Jessica Chastain et McKenzy Foy). D’où son appellation de Khaki Field “Murph”. J'ai personnellement une préférence pour la récente version en 38mm.
+    <p>Le film repose sur le concept d’une répétition sans fin du même jour. Le réveil, qui sonne toujours à 6h00, est la métaphore parfaite de cette boucle : le début immuable de chaque nouvelle journée.
+    Le Panasonic RC-6025, avec son affichage clair et son alarme distinctive, devient presque un personnage à part entière, incarnant cette répétition mécanique et inévitable. En plus de sa chanson insupportable, il est le symbole de la monotonie du jour qui ne finit jamais.
     </p>
+    <?php if (isset($_SESSION['id_utilisateur'])): ?>
     <form action="" method="post">
-        <textarea name="contenu_commentaire" id="commentaire" rows="10" placeholder="Commentaire" required></textarea>
-        <button type="submit" name="envoyerCom">Envoyer</button>
+        <textarea name="contenu_commentaire" id="commentaire" placeholder="Commentaire" required></textarea>
+        <div>
+            <button type="submit" name="envoyerCom" class="btn-1">Ajouter commentaire</button>
+        </div>
     </form>
-    <h2>Liste Commentaires</h2>
-    <div>
+    <?php else: ?>
+        <p><a href="index.php?page=connexion">Connecte-toi</a> pour poster un commentaire.</p>
+    <?php endif; ?>
+    <div id="listeCommentaires">
+        <h2>Liste Commentaires</h2>
         <?= $comList; ?>
     </div>
 </main>

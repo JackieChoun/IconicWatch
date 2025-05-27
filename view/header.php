@@ -40,7 +40,8 @@ if (isset($_SESSION["id_utilisateur"])) {
                 <input type="search" maxlength="100" minlength="2" size="30" id="search">
                 <label for="search"> <img src="./source/image/logo/Search.svg" alt="search" class="icones"> </label>
             </div>
-            <a href="<?php echo isset($_SESSION['id_utilisateur']) ? 'controllerCompteUtilisateur.php' : 'controllerConnexion.php'; ?>"> <img src="./source/image/logo/utilisateur.svg" alt="utilisateur" class="icones"></a>
+            <a href="<?php echo isset($_SESSION['id_utilisateur']) ? 'controllerCompteUtilisateur.php' : 'controllerConnexion.php'; ?>"> <img src="./source/image/logo/utilisateur.svg" alt="utilisateur" class="icones" id="logoUtilisateur"></a>
+            <!-- Menu burger -->
             <nav id="menuContainer">
                 <button id="button"><img src="./source/image/logo/Menu.svg" alt="Menu"></button>
                 <ul id="liste">
